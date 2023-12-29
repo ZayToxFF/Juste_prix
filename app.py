@@ -10,11 +10,10 @@ message = ""
 
 @app.route('/')
 def debut():
-    global i, cible
+    global i
     i = 1
     # Tirage d'un prix (entier) au hasard entre 1 et 100
-    cible = random.randint(1, 100)
-    return render_template('index.html', cible)
+    return render_template('index.html')
 
 @app.route('/loading')
 def loading_page():
@@ -27,7 +26,8 @@ def loading_page():
 
 @app.route('/essai', methods=['GET', 'POST'])
 def essai():
-    global i, cible, pseudo, message
+    cible = random.randint(1, 100)
+    global i, pseudo, message
 
     if request.method == 'POST':
         try:
