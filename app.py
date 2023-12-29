@@ -14,7 +14,7 @@ def debut():
     i = 1
     cible = random.randint(1, 100)
 
-    return render_template('index.html')
+    return render_template('index.html', cible=cible)
 
 @app.route('/loading', methods=['GET', 'POST'])
 def loading_page():
@@ -25,7 +25,7 @@ def loading_page():
         pseudo = request.form['pseudo']
 
     time.sleep(2)
-    return render_template('loading.html', pseudo=pseudo)
+    return render_template('loading.html', pseudo=pseudo, cible=cible)
 
 @app.route('/essai', methods=['GET', 'POST'])
 def essai():
