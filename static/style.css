@@ -9,24 +9,24 @@ body{
 }
 
 section{
-    display: flex;
-    height: 100vh;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+  display: flex;
+  height: 100vh;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 form{
-    display: flex;
-    flex-direction: column;
-    border-radius: 12px;
-    width: 350px;
-    height: 500px;
-    background-color: white;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  width: 350px;
+  height: 500px;
+  background-color: white;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 
 img{
@@ -121,7 +121,7 @@ img{
       width: 100%;
     }
     form {
-      width: 100%;
+      width: 300px;
     }
     img {
       display:none;
