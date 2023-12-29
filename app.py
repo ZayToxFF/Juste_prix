@@ -40,7 +40,7 @@ def essai():
         else:
             i += 1
             if essai == cible:
-                message = "WIN !!!"
+                message = "WIN !!!!"
                 return render_template('index.html')
             elif i > 10:
                 message = "Lost..."
