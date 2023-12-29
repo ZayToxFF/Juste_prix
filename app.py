@@ -39,6 +39,7 @@ def essai():
             if cible == essai:
                 message = "WIN !!!"
                 i = 1  # Déplacer cette ligne ici
+                time.sleep(3)
                 return render_template('index.html')
             elif i > 5:
                 message = "Lost..."
