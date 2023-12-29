@@ -6,6 +6,7 @@ app = Flask(__name__)
 i = 1
 pseudo = "Guest"
 message = ""
+cible = 0  # Déclarer cible en dehors des routes pour éviter des erreurs
 
 @app.route('/')
 def debut():
@@ -13,18 +14,20 @@ def debut():
     i = 1
     return render_template('index.html')
 
-@app.route('/loading')
+@app.route('/loading', methods=['GET', 'POST'])
 def loading_page():
-    time.sleep(2)
-    global pseudo,cible
+    global pseudo, cible
 
-    cible = random.randint(1, 100)
-    pseudo = request.values['pseudo']
+    if request.method == 'POST':
+        pseudo = request.form['pseudo']
+        cible = random.randint(1, 100)
+
+    time.sleep(2)
     return render_template('loading.html', pseudo=pseudo, cible=cible)
 
 @app.route('/essai', methods=['GET', 'POST'])
 def essai():
-    global i,cible, pseudo, message
+    global i, cible, pseudo, message
 
     if request.method == 'POST':
         try:
@@ -35,15 +38,14 @@ def essai():
             i += 1
             if cible == essai:
                 message = "WIN !!!"
-                i = 1  # Déplacer cette ligne ici
-                time.sleep(3)                
+                i = 1
+                time.sleep(3)
                 return render_template('index.html')
             elif i > 10:
                 message = "Lost..."
                 i = 1
                 time.sleep(3)
                 return render_template('index.html')
-
             elif cible > essai:
                 message = "NOT ENOUGH..."
             else:
