@@ -3,16 +3,16 @@ import random
 import time
 
 app = Flask(__name__)
-i = None
+i = 0
 cible = None
-pseudo = None
+pseudo = "Guest"
 message = ""
 
 @app.route('/')
 def debut():
     global i, cible
     i = 1
-    # Tirage d'un prix (entier) au hasard entre 1 et 10
+    # Tirage d'un prix (entier) au hasard entre 1 et 100
     cible = random.randint(1, 100)
     return render_template('index.html')
 
