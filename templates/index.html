@@ -24,33 +24,7 @@
               </div>
 
         </form>
-        <audio id="audioElement" loop autoplay>
-            <source  src="Zen Garden_ Soothing Meditation Music For Deep Relaxation.mp3" type="audio/mpeg">
-            Votre navigateur ne prend pas en charge l'élément audio.
-        </audio>
     </section>
 
 </body>
 </html>
-
-<script>
-    const volumeIcon = document.getElementById("volumeIcon");
-    const pushable = document.getElementById("pushable");
-    const audioElement = document.getElementById("audioElement");
-
-
-    let isMuted = false;
-
-    pushable.addEventListener("click", () => {
-        if (isMuted) {
-            audioElement.play();
-            volumeIcon.classList.remove("fa-volume-xmark");
-            volumeIcon.classList.add("fa-volume-high");
-        } else {
-            audioElement.pause();
-            volumeIcon.classList.remove("fa-volume-high");
-            volumeIcon.classList.add("fa-volume-xmark");
-        }
-        isMuted = !isMuted;
-    });
-</script>
