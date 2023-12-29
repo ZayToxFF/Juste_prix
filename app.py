@@ -1,30 +1,29 @@
 from flask import Flask, render_template, request
 import random
+import time
 
 app = Flask(__name__)
-i = 1
-pseudo = "Guest"
+i = None
+cible = None
+pseudo = None
 message = ""
-cible = 0
-
-def generate_target():
-    return random.randint(1, 100)
 
 @app.route('/')
 def debut():
     global i, cible
     i = 1
-    cible = generate_target()
-    return render_template('index.html', cible=cible)
+    # Tirage d'un prix (entier) au hasard entre 1 et 10
+    cible = random.randint(1, 10)
+    return render_template('index.html')
 
-@app.route('/loading', methods=['GET', 'POST'])
+@app.route('/loading')
 def loading_page():
-    global pseudo, cible
-
-    if request.method == 'POST':
-        pseudo = request.form['pseudo']
-
-    return render_template('loading.html', pseudo=pseudo, cible=cible)
+    # Supposons que vous effectuiez un traitement ou une requête ici
+    # Simulons un délai de chargement de 3 secondes
+    time.sleep(2)
+    global pseudo
+    pseudo = request.values['pseudo']
+    return render_template('loading.html', pseudo=pseudo)
 
 @app.route('/essai', methods=['GET', 'POST'])
 def essai():
@@ -33,24 +32,25 @@ def essai():
     if request.method == 'POST':
         try:
             essai = int(request.form['essai'])
-            if not (1 <= essai <= 100):
-                raise ValueError("Le nombre doit être entre 1 et 100.")
-        except ValueError as e:
-            message = str(e)
+        except ValueError:
+            message = "Please enter a valid number."
         else:
             i += 1
-            if essai == cible:
-                message = "WIN !!!!"
+            if cible == essai:
+                message = "WIN !!!"
+                i = 1  # Déplacer cette ligne ici
                 return render_template('index.html')
-            elif i > 10:
+            elif i > 5:
                 message = "Lost..."
+                i = 1
                 return render_template('index.html')
+
             elif cible > essai:
                 message = "NOT ENOUGH..."
             else:
                 message = "TOO HIGH..."
 
-    return render_template('essai.html', i=i, pseudo=pseudo, message=message, cible=cible)
+    return render_template('essai.html', i=i, pseudo=pseudo, message=message)
 
 @app.errorhandler(Exception)
 def handle_error(e):
