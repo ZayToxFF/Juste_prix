@@ -33,22 +33,22 @@ def essai():
         try:
             essai = int(request.form['essai'])
         except ValueError:
-            message = "Veuillez entrer un nombre valide."
+            message = "Please enter a valid number."
         else:
             i += 1
             if cible == essai:
-                message = "BRAVO !!!"
+                message = "WIN !!!"
                 i = 1  # Déplacer cette ligne ici
                 return render_template('index.html')
             elif i > 5:
-                message = "PERDU..."
+                message = "Lost..."
                 i = 1
                 return render_template('index.html')
 
             elif cible > essai:
-                message = "PAS ASSEZ..."
+                message = "NOT ENOUGH..."
             else:
-                message = "TROP ELEVE..."
+                message = "TOO HIGH..."
 
     return render_template('essai.html', i=i, pseudo=pseudo, message=message)
 
