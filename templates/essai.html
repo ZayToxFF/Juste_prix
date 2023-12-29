@@ -15,10 +15,11 @@
 </head>
 <body>
     <section>
+        <img src="{{ url_for('static', filename='img/load.png') }}" alt="">
         <form action='/essai' method="post">
 
-            <p class="essai_text">Try n°{{ i }}/5</p>
-            <p class="essai_text">number between 1 and 10</p>
+            <p class="essai_text">Try n°{{ i }}/10</p>
+            <p class="essai_text">number between <br> 1 and 100</p>
             <p class="essai_text">{{ pseudo }}</p>
             <p>{{ msg }}</p>
 
@@ -26,7 +27,6 @@
             <p class="pushable"><input class="front" value='Check' type='SUBMIT'></p>   
             <div class="animate__animated animate__fadeInUp animate__slow	 footer">
                 <a class="pushable2 button" href="https://github.com/ZayToxFF"><i class="front2 fa-brands fa-github"></i></a>
-                <a id="pushable" class="pushable2 button" href="#"><i id="volumeIcon" class="front2 fa-solid fa-volume-high"></i></a>
             </div>
         </form>
         <p class="message"><i style="margin-right: 8px;" class="fa-solid fa-bell"></i> {{ message }}</p>

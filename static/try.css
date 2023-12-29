@@ -136,3 +136,9 @@ img{
     border-radius: 12px;
 
   }
+
+img {
+  position: absolute;
+  left: 5px;
+  top: 5px;
+}
