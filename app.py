@@ -12,22 +12,20 @@ message = ""
 def debut():
     global i
     i = 1
-    # Tirage d'un prix (entier) au hasard entre 1 et 100
     return render_template('index.html')
 
 @app.route('/loading')
 def loading_page():
-    # Supposons que vous effectuiez un traitement ou une requête ici
-    # Simulons un délai de chargement de 3 secondes
     time.sleep(2)
-    global pseudo
+    global pseudo,cible
+    
+    cible = random.randint(1, 100)
     pseudo = request.values['pseudo']
     return render_template('loading.html', pseudo=pseudo)
 
 @app.route('/essai', methods=['GET', 'POST'])
 def essai():
-    cible = random.randint(1, 100)
-    global i, pseudo, message
+    global i,cible, pseudo, message
 
     if request.method == 'POST':
         try:
