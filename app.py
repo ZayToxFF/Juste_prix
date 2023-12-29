@@ -18,7 +18,7 @@ def debut():
 
 @app.route('/loading', methods=['GET', 'POST'])
 def loading_page():
-    global pseudo
+    global pseudo,cible
     
 
     if request.method == 'POST':
@@ -51,7 +51,7 @@ def essai():
             else:
                 message = "TOO HIGH..."
 
-    return render_template('essai.html', i=i, pseudo=pseudo, message=message, cible=cible)
+    return render_template('essai.html', i=i, pseudo=pseudo, message=message)
 
 @app.errorhandler(Exception)
 def handle_error(e):
