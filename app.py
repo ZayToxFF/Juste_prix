@@ -57,4 +57,3 @@ def essai():
 def handle_error(e):
     app.logger.error(f"An error occurred: {str(e)}")
     return "Internal Server Error", 500
-app.run(debug=True)
