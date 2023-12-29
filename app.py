@@ -10,15 +10,16 @@ cible = 0  # Déclarer cible en dehors des routes pour éviter des erreurs
 
 @app.route('/')
 def debut():
-    global i
+    global i,cible
     i = 1
+    cible = random.randint(1, 100)
+
     return render_template('index.html')
 
 @app.route('/loading', methods=['GET', 'POST'])
 def loading_page():
-    global pseudo, cible
+    global pseudo
     
-    cible = random.randint(1, 100)
 
     if request.method == 'POST':
         pseudo = request.form['pseudo']
