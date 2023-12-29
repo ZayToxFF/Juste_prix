@@ -143,9 +143,10 @@ img {
   position: fixed;
   left: 5px;
   top: 5px;
+  display: block; 
 }
 
-@media (max-width: 600px) {
+@media (max-width: 00px) {
   img {
     display:none;
   }
