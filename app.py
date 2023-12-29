@@ -38,8 +38,8 @@ def essai():
             i += 1
             if cible == essai:
                 message = "BRAVO !!!"
+                i = 1  # Déplacer cette ligne ici
                 return render_template('index.html')
-                i = 1
             elif i > 5:
                 message = "PERDU..."
                 i = 1
