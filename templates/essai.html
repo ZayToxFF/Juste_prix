@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/gif" href="../static/img/favicon.ico" />
+    <link rel="icon" type="image/gif" href="{{ url_for('static', filename='img/favicon.ico') }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='try.css') }}">
+    <title>ISEP - </title>
+</head>
+<body>
+    <section>
+        <form action='/essai' method="post">
+
+            <p class="essai_text">Essai n°{{ i }}/5</p>
+            <p class="essai_text">{{ pseudo }}</p>
+            <p>{{ msg }}</p>
+
+            <input id="essai" name='essai' value="0" type='TEXT' width='10'>
+            <p class="pushable"><input class="front" value='Vérifier' type='SUBMIT'></p>   
+            <div class="animate__animated animate__fadeInUp animate__slow	 footer">
+                <a class="pushable2 button" href="https://github.com/ZayToxFF"><i class="front2 fa-brands fa-github"></i></a>
+                <a id="pushable" class="pushable2 button" href="#"><i id="volumeIcon" class="front2 fa-solid fa-volume-high"></i></a>
+            </div>
+        </form>
+        <p class="message"><i style="margin-right: 8px;" class="fa-solid fa-bell"></i> {{ message }}</p>
+    </section>
+
+</body>
+</html>
