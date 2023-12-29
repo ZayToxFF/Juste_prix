@@ -138,6 +138,8 @@ img{
   }
 
 img {
+  width: 100px;
+  height: 100px;
   position: fixed;
   left: 5px;
   top: 5px;
