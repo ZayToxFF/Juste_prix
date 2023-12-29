@@ -48,7 +48,7 @@ def essai():
             else:
                 message = "TOO HIGH..."
 
-    return render_template('essai.html', i=i, pseudo=pseudo, message=message)
+    return render_template('essai.html', i=i, pseudo=pseudo, message=message, cible=cible)
 
 @app.errorhandler(Exception)
 def handle_error(e):
