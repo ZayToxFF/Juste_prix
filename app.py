@@ -12,7 +12,7 @@ message = ""
 def debut():
     global i, cible
     i = 1
-    # Assurez-vous que cible est initialisé une seule fois au début du jeu
+    # Assurez-vous que cible est initialisé au début du jeu s'il ne l'est pas déjà
     if cible is None:
         cible = random.randint(1, 100)
     return render_template('index.html')
