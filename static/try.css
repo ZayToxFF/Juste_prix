@@ -146,7 +146,7 @@ img {
   display: block; 
 }
 
-@media (max-width: 00px) {
+@media (max-width: 600px) {
   img {
     display:none;
   }
