@@ -4,7 +4,6 @@ import time
 
 app = Flask(__name__)
 i = 1
-cible = None
 pseudo = "Guest"
 message = ""
 
@@ -21,7 +20,7 @@ def loading_page():
 
     cible = random.randint(1, 100)
     pseudo = request.values['pseudo']
-    return render_template('loading.html', pseudo=pseudo)
+    return render_template('loading.html', pseudo=pseudo, cible=cible)
 
 @app.route('/essai', methods=['GET', 'POST'])
 def essai():
