@@ -13,7 +13,7 @@ def debut():
     global i, cible
     i = 1
     # Tirage d'un prix (entier) au hasard entre 1 et 10
-    cible = random.randint(1, 10)
+    cible = random.randint(1, 100)
     return render_template('index.html')
 
 @app.route('/loading')
@@ -41,7 +41,7 @@ def essai():
                 i = 1  # Déplacer cette ligne ici
                 time.sleep(3)
                 return render_template('index.html')
-            elif i > 5:
+            elif i > 10:
                 message = "Lost..."
                 i = 1
                 return render_template('index.html')
