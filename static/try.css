@@ -144,3 +144,9 @@ img {
   left: 5px;
   top: 5px;
 }
+
+@media (max-width: 600px) {
+  img {
+    display:none;
+  }
+}
