@@ -17,8 +17,8 @@ def debut():
 @app.route('/loading')
 def loading_page():
     time.sleep(2)
-    global pseudo,cible
-    
+    global pseudo
+
     cible = random.randint(1, 100)
     pseudo = request.values['pseudo']
     return render_template('loading.html', pseudo=pseudo)
