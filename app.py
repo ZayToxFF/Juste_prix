@@ -17,10 +17,11 @@ def debut():
 @app.route('/loading', methods=['GET', 'POST'])
 def loading_page():
     global pseudo, cible
+    
+    cible = random.randint(1, 100)
 
     if request.method == 'POST':
         pseudo = request.form['pseudo']
-        cible = random.randint(1, 100)
 
     time.sleep(2)
     return render_template('loading.html', pseudo=pseudo)
