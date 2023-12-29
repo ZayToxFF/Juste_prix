@@ -12,8 +12,9 @@ message = ""
 def debut():
     global i, cible
     i = 1
-    # Tirage d'un prix (entier) au hasard entre 1 et 100
-    cible = random.randint(1, 100)
+    # Assurez-vous que cible est initialisé une seule fois au début du jeu
+    if cible is None:
+        cible = random.randint(1, 100)
     return render_template('index.html')
 
 @app.route('/loading')
@@ -28,7 +29,6 @@ def loading_page():
 @app.route('/essai', methods=['GET', 'POST'])
 def essai():
     global i, cible, pseudo, message
-    cible = random.randint(1, 100)
 
     if request.method == 'POST':
         try:
@@ -41,10 +41,14 @@ def essai():
                 if cible == essai:
                     message = "WIN !!!"
                     i = 1  # Réinitialiser le compteur après la victoire
+                    # Réinitialiser cible pour un nouveau jeu
+                    cible = random.randint(1, 100)
                     return render_template('index.html')
                 elif i > 10:
                     message = "Lost..."
                     i = 1  # Réinitialiser le compteur après avoir dépassé le nombre d'essais
+                    # Réinitialiser cible pour un nouveau jeu
+                    cible = random.randint(1, 100)
                     return render_template('index.html')
                 elif cible > essai:
                     message = "NOT ENOUGH..."
