@@ -4,7 +4,7 @@ import time
 
 app = Flask(__name__)
 i = 1
-cible = None
+cible = 0
 pseudo = "Guest"
 message = ""
 
@@ -17,7 +17,7 @@ def debut():
 @app.route('/loading')
 def loading_page():
     time.sleep(2)
-    global pseudo
+    global pseudo,cible
 
     cible = random.randint(1, 100)
     pseudo = request.values['pseudo']
