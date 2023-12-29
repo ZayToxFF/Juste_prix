@@ -23,7 +23,7 @@ def loading_page():
     time.sleep(2)
     global pseudo, cible
     pseudo = request.values['pseudo']
-    return render_template('loading.html', pseudo=pseudo cible)
+    return render_template('loading.html', pseudo=pseudo)
 
 @app.route('/essai', methods=['GET', 'POST'])
 def essai():
