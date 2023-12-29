@@ -4,7 +4,7 @@ import time
 
 app = Flask(__name__)
 i = 1
-cible = 0
+cible = None
 pseudo = "Guest"
 message = ""
 
