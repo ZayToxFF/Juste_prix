@@ -36,20 +36,21 @@ def essai():
             message = "Please enter a valid number."
         else:
             i += 1
-            if cible == essai:
-                message = "WIN !!!"
-                i = 1  # Déplacer cette ligne ici
-                time.sleep(3)
-                return render_template('index.html')
-            elif i > 10:
-                message = "Lost..."
-                i = 1
-                return render_template('index.html')
-
-            elif cible > essai:
-                message = "NOT ENOUGH..."
+            if cible is not None:  # Vérifier si cible est initialisé
+                if cible == essai:
+                    message = "WIN !!!"
+                    i = 1  # Réinitialiser le compteur après la victoire
+                    return render_template('index.html')
+                elif i > 10:
+                    message = "Lost..."
+                    i = 1  # Réinitialiser le compteur après avoir dépassé le nombre d'essais
+                    return render_template('index.html')
+                elif cible > essai:
+                    message = "NOT ENOUGH..."
+                else:
+                    message = "TOO HIGH..."
             else:
-                message = "TOO HIGH..."
+                message = "An error occurred: 'cible' is not initialized."
 
     return render_template('essai.html', i=i, pseudo=pseudo, message=message)
 
