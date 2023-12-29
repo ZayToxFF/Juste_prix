@@ -21,7 +21,7 @@ def loading_page():
     # Supposons que vous effectuiez un traitement ou une requête ici
     # Simulons un délai de chargement de 3 secondes
     time.sleep(2)
-    global pseudo, cible
+    global pseudo
     pseudo = request.values['pseudo']
     return render_template('loading.html', pseudo=pseudo)
 
