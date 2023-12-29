@@ -38,14 +38,12 @@ def essai():
             message = "Please enter a valid number."
         else:
             i += 1
-            if cible == essai:
+            if essai == cible:
                 message = "WIN !!!"
-                i = 1
                 time.sleep(3)
                 return render_template('index.html')
             elif i > 10:
                 message = "Lost..."
-                i = 1
                 time.sleep(3)
                 return render_template('index.html')
             elif cible > essai:
