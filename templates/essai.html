@@ -37,7 +37,8 @@
 
 
 <script>
-    function submitForm() {
+    function submitForm(event) {
+        event.preventDefault();  // Empêche le comportement par défaut du formulaire
         document.getElementById("loadingForm").submit();
     }
 </script>
