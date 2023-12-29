@@ -28,6 +28,7 @@ def loading_page():
 @app.route('/essai', methods=['GET', 'POST'])
 def essai():
     global i, cible, pseudo, message
+    cible = random.randint(1, 100)
 
     if request.method == 'POST':
         try:
