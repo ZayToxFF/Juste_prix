@@ -52,3 +52,7 @@ def essai():
 
     return render_template('essai.html', i=i, pseudo=pseudo, message=message)
 
+@app.errorhandler(Exception)
+def handle_error(e):
+    app.logger.error(f"An error occurred: {str(e)}")
+    return "Internal Server Error", 500
