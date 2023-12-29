@@ -115,3 +115,15 @@ img{
 .pushable2:active .front2 {
     transform: translateY(-2px);
   }
+
+  @media (max-width: 600px) {
+    section {
+      width: 100%;
+    }
+    form {
+      width: 100%;
+    }
+    img {
+      display:none;
+    }
+  }
