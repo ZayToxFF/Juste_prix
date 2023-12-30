@@ -43,13 +43,12 @@ def essai():
                     message = "WIN !!!"
                     i = 1
                     cible = None
-                    time.sleep(4)
                     return render_template('index.html')
                 elif i > 5:
                     message = "Lost..."
                     i = 1
                     cible = None
-                    time.sleep(4)
+                    time.sleep(2)
                     return render_template('index.html')
                 elif cible > essai:
                     message = "NOT ENOUGH..."
