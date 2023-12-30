@@ -37,19 +37,6 @@
 <script>
     document.getElementById("essaiForm").addEventListener("submit", function(event) {
         event.preventDefault(); // Empêche la soumission par défaut du formulaire
-
-        // Récupérer les données du formulaire
-        var formData = new FormData(document.getElementById("essaiForm"));
-
-        // Envoyer les données au serveur avec AJAX
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "/essai", true);
-        xhr.onload = function () {
-            if (xhr.status === 200) {
-                // Succès de la requête, traiter la réponse si nécessaire
-                console.log(xhr.responseText);
-            }
-        };
-        xhr.send(formData);
+        // Autres actions que vous souhaitez effectuer avec les données du formulaire
     });
 </script>
