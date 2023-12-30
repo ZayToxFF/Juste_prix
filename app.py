@@ -1,8 +1,10 @@
 from flask import Flask, render_template, request
 import random
 import time
+from threading import Lock
 
 app = Flask(__name__)
+lock = Lock()
 i = None
 cible = None
 pseudo = None
@@ -11,9 +13,10 @@ message = ""
 @app.route('/')
 def debut():
     global i, cible
-    i = 1
-    # Tirage d'un prix (entier) au hasard entre 1 et 10
-    cible = random.randint(1, 10)
+    with lock:
+        i = 1
+        # Tirage d'un prix (entier) au hasard entre 1 et 10
+        cible = random.randint(1, 10)
     return render_template('index.html')
 
 @app.route('/loading')
@@ -35,20 +38,21 @@ def essai():
         except ValueError:
             message = "Please enter a valid number."
         else:
-            i += 1
-            if cible == essai:
-                message = "WIN !!!"
-                i = 1  # Déplacer cette ligne ici
-                return render_template('index.html')
-            elif i > 5:
-                message = "Lost..."
-                i = 1
-                return render_template('index.html')
+            with lock:
+                i += 1
+                if cible == essai:
+                    message = "WIN !!!"
+                    i = 1  # Déplacer cette ligne ici
+                    return render_template('index.html')
+                elif i > 5:
+                    message = "Lost..."
+                    i = 1
+                    return render_template('index.html')
 
-            elif cible > essai:
-                message = "NOT ENOUGH..."
-            else:
-                message = "TOO HIGH..."
+                elif cible > essai:
+                    message = "NOT ENOUGH..."
+                else:
+                    message = "TOO HIGH..."
 
     return render_template('essai.html', i=i, pseudo=pseudo, message=message)
 
@@ -56,3 +60,6 @@ def essai():
 def handle_error(e):
     app.logger.error(f"An error occurred: {str(e)}")
     return "Internal Server Error", 500
+
+if __name__ == '__main__':
+    app.run(debug=True)
