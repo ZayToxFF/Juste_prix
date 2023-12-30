@@ -5,9 +5,9 @@ from threading import Lock
 
 app = Flask(__name__)
 lock = Lock()
-i = None
+i = 1
 cible = None
-pseudo = None
+pseudo = "Guest"
 message = ""
 
 @app.route('/')
