@@ -38,8 +38,8 @@ def essai():
             message = "Please enter a valid number."
         else:
             with lock:
-                i += 1
                 if cible is not None:
+                    i += 1
                     if cible == essai:
                         message = "WIN !!!"
                         i = 1
