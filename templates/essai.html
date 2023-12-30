@@ -16,7 +16,7 @@
 <body>
     <section>
         <img src="{{ url_for('static', filename='img/load.png') }}" alt="">
-        <form action='/essai' method="post">
+        <form id="essaiForm" action='/essai' method="post">
 
             <p class="essai_text" style="font-weight: bold; font-size: xx-large;">Try n°{{ i }}/5</p>
             <p class="essai_text" style="font-size: small;">number between <br> 1 and 100</p>
@@ -32,3 +32,11 @@
 
 </body>
 </html>
+
+
+<script>
+    document.getElementById("essaiForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Empêche la soumission par défaut du formulaire
+        // Autres actions que vous souhaitez effectuer avec les données du formulaire
+    });
+</script>
