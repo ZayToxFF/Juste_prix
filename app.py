@@ -15,13 +15,13 @@ def debut():
     global i, cible
     with lock:
         i = 1
+        # Initialiser cible uniquement si elle n'est pas déjà initialisée
         if cible is None:
             cible = random.randint(1, 100)
     return render_template('index.html')
 
 @app.route('/loading')
 def loading_page():
-
     time.sleep(2)
     global pseudo
     pseudo = request.values['pseudo']
@@ -39,27 +39,26 @@ def essai():
         else:
             with lock:
                 i += 1
-                if cible == essai:
-                    message = "WIN !!!"
-                    i = 1
-                    cible = None
-                    return render_template('index.html')
-                elif i > 5:
-                    message = "Lost..."
-                    i = 1
-                    cible = None
-                    time.sleep(2)
-                    return render_template('index.html')
-                elif cible > essai:
-                    message = "NOT ENOUGH..."
+                if cible is not None:
+                    if cible == essai:
+                        message = "WIN !!!"
+                        i = 1
+                        cible = None
+                        return render_template('index.html')
+                    elif i > 5:
+                        message = "Lost..."
+                        i = 1
+                        cible = None
+                        time.sleep(2)
+                        return render_template('index.html')
+                    elif cible > essai:
+                        message = "NOT ENOUGH..."
+                    else:
+                        message = "TOO HIGH..."
                 else:
-                    message = "TOO HIGH..."
+                    message = "Error: cible is not initialized."
 
     return render_template('essai.html', i=i, pseudo=pseudo, message=message)
 
-@app.errorhandler(Exception)
-def handle_error(e):
-    app.logger.error(f"An error occurred: {str(e)}")
-    return "Internal Server Error", 500
 
 
