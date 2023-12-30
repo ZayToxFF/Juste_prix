@@ -15,15 +15,13 @@ def debut():
     global i, cible
     with lock:
         i = 1
-        # Tirage d'un prix (entier) au hasard entre 1 et 100 si cible n'est pas encore initialisée
         if cible is None:
             cible = random.randint(1, 100)
     return render_template('index.html')
 
 @app.route('/loading')
 def loading_page():
-    # Supposons que vous effectuiez un traitement ou une requête ici
-    # Simulons un délai de chargement de 3 secondes
+
     time.sleep(2)
     global pseudo
     pseudo = request.values['pseudo']
@@ -44,14 +42,14 @@ def essai():
                 if cible == essai:
                     message = "WIN !!!"
                     i = 1
-                    # Réinitialiser cible si vous le souhaitez
                     cible = None
+                    time.sleep(4)
                     return render_template('index.html')
                 elif i > 5:
                     message = "Lost..."
                     i = 1
-                    # Réinitialiser cible si vous le souhaitez
                     cible = None
+                    time.sleep(4)
                     return render_template('index.html')
                 elif cible > essai:
                     message = "NOT ENOUGH..."
