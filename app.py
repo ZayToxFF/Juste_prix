@@ -6,17 +6,17 @@ from threading import Lock
 app = Flask(__name__)
 lock = Lock()
 i = None
-cible = None
+cible = random.randint(1, 100)
 pseudo = None
 message = ""
 
 @app.route('/')
 def debut():
-    global i, cible
+    global i
     with lock:
         i = 1
         # Tirage d'un prix (entier) au hasard entre 1 et 10
-        cible = random.randint(1, 10)
+       
     return render_template('index.html')
 
 @app.route('/loading')
@@ -24,7 +24,7 @@ def loading_page():
     # Supposons que vous effectuiez un traitement ou une requête ici
     # Simulons un délai de chargement de 3 secondes
     time.sleep(2)
-    global pseudo
+    global pseudo,cible
     pseudo = request.values['pseudo']
     return render_template('loading.html', pseudo=pseudo)
 
